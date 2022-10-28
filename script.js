@@ -229,7 +229,7 @@ function something2() {
 
 console.log(something2());
 
-console.log(`-------6 uzduotis-------`);
+console.log(`-------7 uzduotis-------`);
 
 // function funkcija6() {
 //   masyvas = [];
