@@ -231,18 +231,52 @@ console.log(something2());
 
 console.log(`-------6 uzduotis-------`);
 
-function funkcija6() {
-  masyvas = [];
-  rndNum = Math.round(Math.random() * (20 - 10) + 10);
-  console.log(rndNum);
-  for (let i = 0; i < rndNum; i++) {
-    if (i + 1 === rndNum) {
-      masyvas[i] = [];
-    } else {
-      masyvas[i] = Math.round(Math.random() * 10);
+// function funkcija6() {
+//   masyvas = [];
+
+//   rndNum = Math.round(Math.random() * (20 - 10) + 10);
+//   repeat = Math.round(Math.random() * (30 - 10) + 10);
+
+//   for (let i = 0; i < rndNum; i++) {
+//     if (i + 1 === rndNum) {
+//       masyvas[i] = [];
+//       for (let y = 0; y < rndNum; y++) {
+//         if (y + 1 === rndNum) {
+//           masyvas[i][y] = 0;
+//         } else {
+//           masyvas[i][y] = Math.round(Math.random() * 10);
+//         }
+//       }
+//     } else {
+//       masyvas[i] = Math.round(Math.random() * 10);
+//     }
+//   }
+//   console.log(masyvas);
+//   grandMasyvas = [];
+//   for (let i = 0; i < repeat; i++) {}
+// }
+
+// funkcija6();
+
+f6();
+function f6() {
+  let masyvas = [];
+  repeat = 4;
+  for (let i = 0; i < rndNum - 1; i++) {
+    rndNum = Math.round(Math.random() * (20 - 10) + 10);
+    masyvas[i] = Math.round(Math.random() * 10);
+  }
+
+  masyvas[rndNum - 1] = 0;
+
+  console.log(masyvas);
+  for (let y = 0; y < repeat; y++) {
+    let tempArr = [];
+    for (let i = 0; i < rndNum - 1; i++) {
+      tempArr[i] = Math.round(Math.random() * 10);
     }
+    tempArr[rndNum - 1] = masyvas;
+    masyvas = tempArr;
   }
   console.log(masyvas);
 }
-
-funkcija6();
