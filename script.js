@@ -314,3 +314,59 @@ function last3Prime() {
 }
 
 last3Prime();
+
+console.log(`--------10 uzduotis--------`);
+
+function vidurkisDaugiau70() {
+  masyvas = [];
+  pirminiuMasyvas = [];
+
+  //  sukuriu masyva su 10 masyvu kuriuose skaciai nuo 1 iki 100
+  for (let i = 0; i < 10; i++) {
+    masyvas.push([]);
+    for (let y = 0; y < 10; y++) {
+      masyvas[i].push(Math.round(Math.random() * (100 - 1) + 1));
+    }
+  }
+  console.log(masyvas);
+  //  didejancia tvarka isdestau masyvuose esancius skaicius
+  susortintas = masyvas.flat(2).sort((a, b) => a - b);
+  console.log(susortintas);
+  // Atrandu visus pirminius skaicius ir priskiriu juos pirminiu masyvui
+  for (let x = 0; x < susortintas.length; x++) {
+    if (isKiekSveikuDalinas(susortintas[x]) == 0) {
+      pirminiuMasyvas.push(susortintas[x]);
+    }
+  }
+
+  // suskaiciuoju pirminiu skaiciu vidurki
+  pirminiuVidurkis =
+    pirminiuMasyvas.reduce((a, b) => a + b, 0) / pirminiuMasyvas.length;
+
+  // loopinu per masyva tol kol pirminiu skaiciu vidurkis taps aukstesnis nei 70, pridedamas 3 prie maziausios VISO masyvo reiksmes
+  do {
+    // sortina nauja masyva padaryta apacioje loopo
+    susortintas = masyvas.flat(2).sort((a, b) => a - b);
+    // prideda naujo masyvo (NE TIK PIRMINIU SKAICIU) maziausiam skaiciui +3
+    susortintas[0] += 3;
+    // nunulinu pirminiu skaciu masyva
+    pirminiuMasyvas = [];
+    // susortintas masyvas tampa nauju masyvu per kuri loopins dar kart jei while salyga not true
+    masyvas = susortintas;
+    // loopas per nauja masyva ir ieskojimas nauju pirminiu skaiciu
+    for (let x = 0; x < susortintas.length; x++) {
+      if (isKiekSveikuDalinas(susortintas[x]) == 0) {
+        pirminiuMasyvas.push(susortintas[x]);
+      }
+    }
+    // skaiciuoju nauja pirminiu vidurki
+    pirminiuVidurkis =
+      pirminiuMasyvas.reduce((a, b) => a + b, 0) / pirminiuMasyvas.length;
+    // console.log(pirminiuVidurkis);
+  } while (pirminiuVidurkis < 70);
+
+  console.log(pirminiuMasyvas);
+  console.log(pirminiuVidurkis);
+}
+
+vidurkisDaugiau70();
