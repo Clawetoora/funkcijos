@@ -187,6 +187,18 @@ addAllNumbers();
 
 console.log(`-------4 uzduotis-------`);
 
+function isKiekSveikuDalinas(number) {
+  counter = 0;
+  for (let i = 2; i < number - 1; i++) {
+    if (number % i === 0) {
+      counter++;
+    }
+  }
+  return counter;
+}
+
+console.log(`-------5 uzduotis-------`);
+
 function something() {
   let masyvas1 = [];
   for (let i = 0; i < 100; i++) {
@@ -199,21 +211,9 @@ function something() {
 
 something();
 
-console.log(`-------5 uzduotis-------`);
-
-function isKiekSveikuDalinas(number) {
-  counter = 0;
-  for (let i = 2; i < number - 1; i++) {
-    if (number % i === 0) {
-      counter++;
-    }
-  }
-  return counter;
-}
-
 console.log(isKiekSveikuDalinas(50));
 
-console.log(`-------5B uzduotis-------`);
+console.log(`-------6 uzduotis-------`);
 
 function something2() {
   let masyvas2 = [];
@@ -258,10 +258,10 @@ console.log(`-------7 uzduotis-------`);
 
 // funkcija6();
 
+let repeat = 4;
 f6();
 function f6() {
   let masyvas = [];
-  repeat = 4;
   for (let i = 0; i < rndNum - 1; i++) {
     rndNum = Math.round(Math.random() * (20 - 10) + 10);
     masyvas[i] = Math.round(Math.random() * 10);
@@ -269,7 +269,6 @@ function f6() {
 
   masyvas[rndNum - 1] = 0;
 
-  console.log(masyvas);
   for (let y = 0; y < repeat; y++) {
     let tempArr = [];
     for (let i = 0; i < rndNum - 1; i++) {
@@ -278,5 +277,40 @@ function f6() {
     tempArr[rndNum - 1] = masyvas;
     masyvas = tempArr;
   }
+  return masyvas;
+}
+console.log(f6());
+
+console.log(`--------8 uzduotis --------`);
+let hehe = f6();
+console.log(hehe.flat(repeat).reduce((a, b) => a + b, 0));
+
+// console.log(`--------8 uzduotis------`);
+// console.log(masyvas.flat(repeat).reduce((a, b) => a + b, 0));
+
+console.log(`--------9 uzduotis--------`);
+
+function last3Prime() {
+  masyvas = [];
+
+  for (let i = 0; i < 3; i++) {
+    rndNum = Math.round(Math.random() * (33 - 1) + 1);
+    masyvas[i] = rndNum;
+  }
+  console.log(masyvas);
+  for (let y = 2; y < masyvas.length; y++) {
+    if (
+      (isKiekSveikuDalinas(masyvas[y]) !== 0 ||
+        isKiekSveikuDalinas(masyvas[y - 1]) !== 0 ||
+        isKiekSveikuDalinas(masyvas[y - 2])) !== 0
+    ) {
+      masyvas.push(Math.round(Math.random() * (33 - 1) + 1));
+    }
+  }
+  // if (masyvas2.length != 0) {
+  //   masyvas.push(Math.round(Math.random() * (33 - 1) + 1));
+  // }
   console.log(masyvas);
 }
+
+last3Prime();
