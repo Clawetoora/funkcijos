@@ -220,7 +220,7 @@ function something2() {
   let masyvas3 = [];
   for (let i = 0; i < 100; i++) {
     masyvas2[i] = Math.round(Math.random() * (777 - 333) + 333);
-    if (isKiekSveikuDalinas(masyvas2[i]) === 0) {
+    if (isKiekSveikuDalinas(masyvas2[i]) !== 0) {
       masyvas3.push(masyvas2[i]);
     }
   }
